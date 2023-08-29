@@ -26,13 +26,14 @@ public class UserService {
     public void saveUser(UserRequest userRequest) {
 
         User myUser = new User();
-        myUser.setName(userRequest.getFirstName());
+        myUser.setFirstName(userRequest.getFirstName());
         myUser.setLastName(userRequest.getLastName());
         myUser.setUserName(userRequest.getUserName());
         //myUser.setPassword(userRequest.getPassword());
         String password= userRequest.getPassword();
-        String encoded = passwordEncoder.encode(password);
-        myUser.setPassword(encoded);
+        String encodedPassword = passwordEncoder.encode(password);
+
+        myUser.setPassword(encodedPassword);
        Role role= roleService.getRoleByType(UserRole.ROLE_ADMIN);
         Set<Role> roles = new HashSet<>();
         roles.add(role);

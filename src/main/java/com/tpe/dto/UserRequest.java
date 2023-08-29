@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Getter
 @Setter
@@ -22,6 +23,7 @@ public class UserRequest {
     private String lastName;
 
     @NotBlank(message = "Please Provide userName")
+    @Size(min=5,max=10, message="Please provide a User Name min=5, max=10 chars long")
     private String userName;
 
     @NotBlank(message = "Please Provide password")
